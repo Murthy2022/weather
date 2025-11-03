@@ -3,6 +3,8 @@ import './App.css';
 import {useState} from 'react';
 import Rain from './Assets/Images/Rain-img.png'
 import Clouds from './Assets/Images/Clouds-img.png'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
 
@@ -49,19 +51,23 @@ if (error){
 
   return (
     <>
-    <div className="weather-box">
-    <h1>Weather</h1>
-    <input type="text" onChange={(e) => setCity(e.target.value)}/>
-    <h2>{climateCondition}</h2>
-    {
-      climateCondition == 'Rain' ?
-      <img className="weather-image" src={Rain} alt=""/> : 
-      climateCondition == 'Clouds'  ? <img className="weather-image" src={Clouds} alt=""/> :<h2> No Image </h2>
-    }
+  <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+    <div className="container text-center style={{ width: '50px', height: '100px' }}">
+      <h1 className="text-center">Weather</h1>
+      <input type="text" onChange={(e) => setCity(e.target.value)} className="form-control mb-3" />
+      <br />
+      <button className="btn btn-primary mb-3" onClick={getWether}>Hit me</button>
+      <h2>{climateCondition}</h2>
+      {
+        climateCondition == 'Rain' ?
+        <img className="weather-image" src={Rain} alt="" /> : 
+        climateCondition == 'Clouds' ? 
+        <img className="weather-image" src={Clouds} alt="" /> :
+        <h2>No Image</h2>
+      }
     </div>
-    <button onClick={getWether}>Hit me</button>
-    </>
-
+  </div>
+</>
   );
 }
 
